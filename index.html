@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toples Penyemangat Army</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --kertas-pink: #ffd1dc;
+            --kertas-biru: #b3e5fc;
+            --kertas-kuning: #fff9c4;
+            --kertas-hijau: #c8e6c9;
+            --kertas-oren: #ffe0b2;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #e1f5fe 100%);
+        }
+
+        .meja {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20vh;
+            background: #f5f5f5;
+            border-top: 10px solid #eeeeee;
+            z-index: 1;
+        }
+
+        .wadah-toples {
+            position: absolute;
+            bottom: 10vh;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #gambar-toples {
+            width: 85vw; /* Responsif: 85% lebar layar HP */
+            max-width: 450px; /* Tapi jangan lebih dari 450px di laptop */
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 20px 30px rgba(255, 182, 193, 0.5));
+        }
+
+        .kertas-pesan {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70vw; /* Responsif di HP */
+            max-width: 250px; /* Maksimal lebar di laptop */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            display: none;
+            z-index: 999;
+            opacity: 1;
+            border: 1px solid rgba(255,255,255,0.8);
+            line-height: 1.3;
+        }
+
+        @keyframes melayang {
+            0% { transform: translate(-50%, 50px) scale(0.5); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translate(-50%, -80px) scale(1) rotate(-1deg); opacity: 1; }
+        }
+
+        /* --- DESAIN UNTUK LAPTOP (Default) --- */
+        .music-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            width: 320px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- PENYESUAIAN UNTUK HP --- */
+        @media (max-width: 600px) {
+            .music-container {
+                top: auto;
+                right: 50%;
+                bottom: 20px; /* Pindah ke bawah agar tidak menabrak kertas */
+                transform: translateX(50%);
+                width: 90vw;
+            }
+            
+            .kertas-pesan {
+                font-size: 1.3rem; /* Font sedikit lebih kecil di HP */
+                padding: 15px;
+            }
+
+            @keyframes melayang {
+                0% { transform: translate(-50%, 30px) scale(0.5); opacity: 0; }
+                20% { opacity: 1; }
+                100% { transform: translate(-50%, -100px) scale(1) rotate(-1deg); opacity: 1; }
+            }
+        }
+
+        .kerlip {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 0 10px #fff, 0 0 20px #ffeb3b;
+            animation: animasiKerlip 0.8s ease-out forwards;
+        }
+
+        @keyframes animasiKerlip {
+            to { transform: translate(var(--arahX), var(--arahY)) scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="meja"></div>
+
+    <div class="wadah-toples" id="area-klik">
+        <img src="May 1, 2026, 11_21_15 PM.jpg" id="gambar-toples" alt="Toples">
+        <div id="kotak-kertas" class="kertas-pesan"></div>
+    </div>
+
+    <div class="music-container">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2188489631&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+        </iframe>
+    </div>
+
+    <script>
+        const listPesan = [
+            { isi: "great things take time. be kind to yourself.", warna: "var(--kertas-pink)" },
+            { isi: "always find time for the things that make you feel happy to be alive.", warna: "var(--kertas-biru)" },
+            { isi: "and just like moon, we must go trough phases of emptiness to feel full again.", warna: "var(--kertas-kuning)" },
+            { isi: "kalau mimpinya BESAR, usahanya ga boleh kecil!", warna: "var(--kertas-hijau)" },
+            { isi: "mekarlah dimanapun tumbuhnya.", warna: "var(--kertas-oren)" },
+            { isi: "terkadang jalan terbaik adalah jalan-jalan.", warna: "var(--kertas-pink)" },
+            { isi: "u did great, please take a rest, i'm proud of u!", warna: "var(--kertas-kuning)" },
+            { isi: "yang bukan kendali kita, ga usah di urus!", warna: "var(--kertas-biru)" },
+            { isi: "you'll bloom in your own time.", warna: "var(--kertas-hijau)" },
+            { isi: "before anything else, thank yourself. you stayed when it was hardest to.", warna: "var(--kertas-oren)" }
+        ];
+
+        const area = document.getElementById('area-klik');
+        const kertas = document.getElementById('kotak-kertas');
+
+        area.addEventListener('click', () => {
+            let dibaca = JSON.parse(localStorage.getItem('army_pesan') || "[]");
+            
+            if(dibaca.length >= listPesan.length) {
+                dibaca = [];
+                localStorage.setItem('army_pesan', JSON.stringify(dibaca));
+            }
+
+            const sisa = listPesan.filter((_, i) => !dibaca.includes(i));
+            const acak = Math.floor(Math.random() * sisa.length);
+            const pilih = sisa[acak];
+            
+            dibaca.push(listPesan.indexOf(pilih));
+            localStorage.setItem('army_pesan', JSON.stringify(dibaca));
+
+            tampil(pilih.isi, pilih.warna);
+        });
+
+        function tampil(txt, bg) {
+            kertas.innerText = txt;
+            kertas.style.backgroundColor = bg;
+            kertas.style.display = 'block';
+            kertas.style.animation = 'none';
+            kertas.offsetHeight; 
+            kertas.style.animation = 'melayang 2.5s ease-out forwards';
+        }
+
+        area.addEventListener('mousemove', (e) => {
+            const s = document.createElement('div');
+            s.className = 'kerlip';
+            s.style.left = e.clientX + 'px';
+            s.style.top = e.clientY + 'px';
+            s.style.setProperty('--arahX', (Math.random()*40-20)+'px');
+            s.style.setProperty('--arahY', (Math.random()*40-20)+'px');
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 800);
+        });
+
+        // Dukungan untuk touch screen HP agar sparkle tetap muncul
+        area.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const s = document.createElement('div');
+            s.className = 'kerlip';
+            s.style.left = touch.clientX + 'px';
+            s.style.top = touch.clientY + 'px';
+            s.style.setProperty('--arahX', (Math.random()*40-20)+'px');
+            s.style.setProperty('--arahY', (Math.random()*40-20)+'px');
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 800);
+        });
+    </script>
+</body>
+</html>
