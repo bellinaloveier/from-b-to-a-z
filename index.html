@@ -45,8 +45,8 @@
         }
 
         #gambar-toples {
-            width: 100vw; /* Responsif: 85% lebar layar HP */
-            max-width: 450px; /* Tapi jangan lebih dari 450px di laptop */
+            width: 100vw; /* responsif: 85% lebar layar HP */
+            max-width: 450px; 
             cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             filter: drop-shadow(0 20px 30px rgba(255, 182, 193, 0.5));
@@ -57,8 +57,8 @@
             bottom: 50%;
             left: 50%;
             transform: translateX(-50%);
-            width: 70vw; /* Responsif di HP */
-            max-width: 250px; /* Maksimal lebar di laptop */
+            width: 70vw; /* responsif di HP */
+            max-width: 250px; 
             padding: 20px;
             border-radius: 15px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
@@ -107,11 +107,9 @@
                 padding: 15px;
             }
 
-            /* Di sini kita buat kertasnya melayang lebih jauh ke atas di HP */
             @keyframes melayang {
                 0% { transform: translate(-50%, 30px) scale(0.5); opacity: 0; }
                 20% { opacity: 1; }
-                /* -180px akan membuat kertas melayang lebih tinggi ke arah atas layar HP */
                 100% { transform: translate(-50%, -180px) scale(1) rotate(-2deg); opacity: 1; }
             }
         }
@@ -160,6 +158,11 @@
             { isi: "yang bukan kendali kita, ga usah di urus!", warna: "var(--kertas-biru)" },
             { isi: "you'll bloom in your own time.", warna: "var(--kertas-hijau)" },
             { isi: "before anything else, thank yourself. you stayed when it was hardest to.", warna: "var(--kertas-oren)" }
+            { isi: "it had to happen, so we could grow.", warna: "var(--kertas-pink)" },
+            { isi: "sometimes the best thing to do is just to relax and let things flow.", warna: "var(--kertas-biru)" },
+            { isi: "kita sebenarnya bisa, cemasnya saja yang berlebihan.", warna: "var(--kertas-kuning)" },
+            { isi: "every day may not be good, but there is something good in every day.", warna: "var(--kertas-hijau)" },
+            { isi: "don't forget to smile, it looks good on you!", warna: "var(--kertas-oren)" }
         ];
 
         const area = document.getElementById('area-klik');
@@ -203,7 +206,7 @@
             setTimeout(() => s.remove(), 800);
         });
 
-        // Dukungan untuk touch screen HP agar sparkle tetap muncul
+        // untuk touch screen HP supaya sparkle tetap muncul
         area.addEventListener('touchmove', (e) => {
             const touch = e.touches[0];
             const s = document.createElement('div');
