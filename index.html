@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toples Penyemangat Army</title>
+    <title>from b to a-z</title>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -45,7 +45,7 @@
         }
 
         #gambar-toples {
-            width: 85vw; /* Responsif: 85% lebar layar HP */
+            width: 100vw; /* Responsif: 85% lebar layar HP */
             max-width: 450px; /* Tapi jangan lebih dari 450px di laptop */
             cursor: pointer;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -78,7 +78,7 @@
             100% { transform: translate(-50%, -80px) scale(1) rotate(-1deg); opacity: 1; }
         }
 
-        /* --- DESAIN UNTUK LAPTOP (Default) --- */
+        /* --- LAPTOP  --- */
         .music-container {
             position: fixed;
             top: 20px;
@@ -92,18 +92,18 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        /* --- PENYESUAIAN UNTUK HP --- */
+        /* --- HP --- */
         @media (max-width: 600px) {
             .music-container {
                 top: auto;
                 right: 50%;
-                bottom: 20px; /* Pindah ke bawah agar tidak menabrak kertas */
+                bottom: 20px; 
                 transform: translateX(50%);
                 width: 90vw;
             }
             
             .kertas-pesan {
-                font-size: 1.3rem; /* Font sedikit lebih kecil di HP */
+                font-size: 1.3rem; /* font sedikit lebih kecil di HP */
                 padding: 15px;
             }
 
